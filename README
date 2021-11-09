@@ -1,0 +1,43 @@
+By Buzea Alexandru-Mihai-Iulian 311CAb
+
+	At start, I used a function to dynamically allocate the map (a matrix
+of variable length) and the array that memorizes the sizes of lines.
+
+TASK 1: SHIELD CHARGE
+
+	During this task, I used some casts of pointers and the arithmetic
+properties of pointers into char in order to obtain the values of the
+bytes (having in consideration the two-complement). Using a long data
+type variable, I added the values of these bytes and then I calculated
+the arithmetic value of them. 
+
+TASK 2: MODIFY, SWAP, DELETE
+
+	During this task, I used a function (basically the kernel of the
+problem, a function that simplifies very much the code) that returns a
+pointer into void. Then I used more casts to modify and delete the value 
+of a data block according to its size. For swapping operation, I used 
+once more time a pointer into char and the basic well-known swap function.
+
+TASK 3: SUPERMASSIVE BLACK HOLES
+
+	During this task, I used the modified map from the previous task.
+For the beginning, I transformed the map (the non-zero bytes were replaced
+with -1 (FF) values), in order to use the following algorithm (to determine
+the position and the magnitude of a supermassive black hole):
+	Step I: I identified a byte with the value zero (which is, by 
+definition, the byte with the smallest possible combination of row and
+column)
+	Step II: After I identified a zero-valued byte, I launched the search
+for other zero-valued bytes which are in the neighbourhood of the initial
+byte. The search was done recursively, and therefore all the zero-valued
+bytes that were connected to each other were included in the supermassive
+black hole.
+	Step III: I stored the coordinates of the first found byte and the 
+magnitude of the black hole in three arrays (allocated dinamically), which
+I reallocated during each step. Although it's not effective, the three
+arrays would help us during other tasks that might occur in the meantime
+
+	Finally, I freed all the dynamically allocated memory, in order to
+avoid memory leaks (#nomoreponiesaredying). I used headers for a better
+modularization of the code.
